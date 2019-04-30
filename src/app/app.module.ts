@@ -2,6 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http'; // los módulos contienen herramientas que necesitamos
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -11,6 +12,10 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
 
 // Importar Rutas
 import { ROUTES } from './routes';
+
+// Importar Servicios
+import { SpotifyService } from './services/spotify.service';
+
 
 @NgModule({
   declarations: [
@@ -22,9 +27,10 @@ import { ROUTES } from './routes';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     RouterModule.forRoot(ROUTES, {useHash: true}),
   ],
-  providers: [],
+  providers: [SpotifyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
