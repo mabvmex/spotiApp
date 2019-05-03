@@ -1,4 +1,7 @@
 
+
+
+
 import { Component } from '@angular/core';
 import { SpotifyService } from '../../services/spotify.service';
 
@@ -10,14 +13,17 @@ import { SpotifyService } from '../../services/spotify.service';
 export class SearchComponent {
 
   artistas: any[] = [];
+  loading: boolean;
 
   constructor(private spotify: SpotifyService) { }
 
   buscar(termino: string) {
-    this.spotify.getArtist(termino)
+    this.loading = true;
+    this.spotify.getArtists(termino)
       .subscribe((data: any) => {
         console.log(data);
         this.artistas = data;
+        this.loading = false;
       });
   }
 }
