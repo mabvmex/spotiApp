@@ -12,16 +12,42 @@
         </p>
     </div>
 
-   
+    <div class=" text-left">
+        <div class="col">
+            <button routerLink='/home' class="btn btn-outline-primary"> Ir a home </button>
+            &nbsp;
+            <button routerLink='/search' class="btn btn-outline-danger"> Ir a busqueda </button>
+        </div>
+    </div>
 
 </div>
 
-<div class=" text-left">
-    <div class="col"> 
-        <button routerLink='/home' class="btn btn-outline-primary"> Ir a home </button>
-    </div>
-    &nbsp;    
-    <div>
-        <button routerLink='/search' class="btn btn-outline-danger"> Ir a busqueda </button>
+
+
+<br>
+<div class="row">
+    <div class="col">
+        <table class="table" style="text-align:center">
+            <thead style="color: rgb(25, 209, 58)">
+                <tr>
+                    <th>Top 10</th>
+                    <th>Foto</th>
+                    <th>Album</th>
+                    <th>Canción</th>
+                    <th>Vista Previa</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let track of topTracks let i=index" style="color: white">
+                    <td> {{i+1+"."}} </td>
+                    <td class="animated fadeIn"> <img class="img-thumb" [src]="track.album.images | noImage"> </td>
+                    <td style="text-align:left"> <a [href]="track.external_urls.spotify" target="_blank">
+                            {{track.album.name}} </a></td>
+                    <td style="text-align:left"> {{track.track_number}} - {{track.name}} </td>
+                    <td> <audio [src]="track.preview_url" controls> </audio> </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
+<div class="m-5"></div>
