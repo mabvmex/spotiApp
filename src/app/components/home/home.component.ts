@@ -12,16 +12,28 @@ export class HomeComponent {
 
   estrenos: any[] = [];
   loading: boolean;
+  error: boolean;
+  mensajeError: '';
+
 
   constructor(private spotify: SpotifyService) {
     this.loading = true;
+    this.error = false;
 
     this.spotify.getNewReleases()
       .subscribe((data: any) => {
         console.log(data);
         this.estrenos = data;
         this.loading = false;
-      });
+      }, (errorServicio) => {
+
+        this.loading = false;
+        this.error = true;
+        console.log(errorServicio);
+        this.mensajeError = errorServicio.error.error.message;
+
+      }
+      );
   }
 
 

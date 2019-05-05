@@ -31,20 +31,26 @@
             <thead style="color: rgb(25, 209, 58)">
                 <tr>
                     <th>Top 10</th>
-                    <th>Foto</th>
-                    <th>Album</th>
-                    <th>Canción</th>
-                    <th>Vista Previa</th>
+                    <th>Album</th> <!-- <th>Foto</th> -->
+                    <!-- <th>Album</th> -->
+                    <!-- <th>Canción</th> -->
+                    <th>Vista Previa | Reproducir </th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let track of topTracks let i=index" style="color: white">
                     <td> {{i+1+"."}} </td>
-                    <td class="animated fadeIn"> <img class="img-thumb" [src]="track.album.images | noImage"> </td>
-                    <td style="text-align:left"> <a [href]="track.external_urls.spotify" target="_blank">
-                            {{track.album.name}} </a></td>
-                    <td style="text-align:left"> {{track.track_number}} - {{track.name}} </td>
-                    <td> <audio [src]="track.preview_url" controls> </audio> </td>
+                    <td style="text-align:left" class="animated fadeIn"> <a [href]="track.external_urls.spotify" target="_blank"> <img
+                                class="img-thumb" [src]="track.album.images | noImage"> &nbsp; {{track.album.name}}</a>
+                    </td>
+                    <!-- <td style="text-align:left"> <a [href]="track.external_urls.spotify" target="_blank"> {{track.album.name}} </a></td> -->
+                    <!-- <td style="text-align:left"> {{track.track_number}} - {{track.name}} </td> -->
+                    <!-- <td> <audio [src]="track.preview_url" controls> </audio> </td> -->
+                    <td>
+                        <iframe [src]="track.uri | domseguro: 'https://open.spotify.com/embed?uri='" width="300"
+                            height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                    </td>
+
                 </tr>
             </tbody>
         </table>
