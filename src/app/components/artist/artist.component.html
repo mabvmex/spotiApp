@@ -47,8 +47,8 @@
                     <!-- <td style="text-align:left"> {{track.track_number}} - {{track.name}} </td> -->
                     <!-- <td> <audio [src]="track.preview_url" controls> </audio> </td> -->
                     <td>
-                        <iframe [src]="track.uri | domseguro: 'https://open.spotify.com/embed?uri='" width="300"
-                            height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                        <iframe [src]="track.uri | domseguro" width="300"
+                            height="80" frameborder="0" allowtransparency="true" allow="encrypted-media" controls></iframe>
                     </td>
 
                 </tr>
